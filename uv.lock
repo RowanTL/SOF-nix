@@ -217,6 +217,11 @@ wheels = [
 ]
 
 [[package]]
+name = "diff-gaussian-rasterization"
+version = "0.0.0"
+source = { directory = "submodules/diff-gaussian-rasterization" }
+
+[[package]]
 name = "einops"
 version = "0.8.2"
 source = { registry = "https://pypi.org/simple" }
@@ -1217,6 +1222,11 @@ wheels = [
 ]
 
 [[package]]
+name = "simple-knn"
+version = "0.0.0"
+source = { directory = "submodules/simple-knn" }
+
+[[package]]
 name = "six"
 version = "1.17.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1231,6 +1241,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "dacite" },
+    { name = "diff-gaussian-rasterization" },
     { name = "einops" },
     { name = "gputil" },
     { name = "imagecodecs", extra = ["all"] },
@@ -1241,6 +1252,8 @@ dependencies = [
     { name = "opencv-python" },
     { name = "plyfile" },
     { name = "scikit-image" },
+    { name = "simple-knn" },
+    { name = "tetra-nerf" },
     { name = "torch" },
     { name = "torchvision" },
     { name = "tqdm" },
@@ -1250,6 +1263,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "dacite", specifier = ">=1.9.2" },
+    { name = "diff-gaussian-rasterization", directory = "submodules/diff-gaussian-rasterization" },
     { name = "einops", specifier = ">=0.8.2" },
     { name = "gputil", specifier = ">=1.4.0" },
     { name = "imagecodecs", extras = ["all"], specifier = "==2024.6.1" },
@@ -1260,6 +1274,8 @@ requires-dist = [
     { name = "opencv-python", specifier = ">=4.13.0.92" },
     { name = "plyfile", specifier = ">=1.1.4" },
     { name = "scikit-image", specifier = "==0.24" },
+    { name = "simple-knn", directory = "submodules/simple-knn" },
+    { name = "tetra-nerf", directory = "submodules/tetra-triangulation" },
     { name = "torch", specifier = ">=2.11.0" },
     { name = "torchvision", specifier = ">=0.26.0" },
     { name = "tqdm", specifier = ">=4.66.5" },
@@ -1277,6 +1293,17 @@ sdist = { url = "https://files.pythonhosted.org/packages/83/d3/803453b36afefb7c2
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a2/09/77d55d46fd61b4a135c444fc97158ef34a095e5681d0a6c10b75bf356191/sympy-1.14.0-py3-none-any.whl", hash = "sha256:e091cc3e99d2141a0ba2847328f5479b05d94a6635cb96148ccb3f34671bd8f5" },
 ]
+
+[[package]]
+name = "tetra-nerf"
+version = "0.1.1"
+source = { directory = "submodules/tetra-triangulation" }
+dependencies = [
+    { name = "trimesh" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "trimesh", specifier = ">=3.20.2" }]
 
 [[package]]
 name = "threadpoolctl"

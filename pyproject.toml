@@ -6,6 +6,7 @@ authors = [ ]
 requires-python = "==3.11.14"
 dependencies = [
     "dacite>=1.9.2",
+    "diff-gaussian-rasterization",
     "einops>=0.8.2",
     "gputil>=1.4.0",
     "imagecodecs[all]==2024.6.1",
@@ -16,6 +17,8 @@ dependencies = [
     "opencv-python>=4.13.0.92",
     "plyfile>=1.1.4",
     "scikit-image==0.24",
+    "simple-knn",
+    "tetra-nerf",
     "torch>=2.11.0",
     "torchvision>=0.26.0",
     "tqdm>=4.66.5",
@@ -24,3 +27,8 @@ dependencies = [
 
 [[tool.uv.index]]
 url = "https://download.pytorch.org/whl/cu128"
+
+[tool.uv.sources]
+simple-knn = { path = "submodules/simple-knn" }
+diff-gaussian-rasterization = { path = "submodules/diff-gaussian-rasterization" }
+tetra-nerf = { path = "submodules/tetra-triangulation" }
