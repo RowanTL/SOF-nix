@@ -20,8 +20,12 @@ pythonPackages.buildPythonPackage {
   ];
 
   buildInputs = [
-    pythonPackages.torch-bin
     pkgs.gcc13.cc.lib
+  ];
+
+  dependencies = [
+    pythonPackages.dacite
+    pythonPackages.torch-bin
   ];
 
   preBuild = ''

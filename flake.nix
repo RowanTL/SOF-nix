@@ -19,8 +19,28 @@
             cudaVersion = "12.8"; # REQUIRED for RTX 50-series GPUs
           };
         };
-        pythonPackages = pkgs.python311Packages;
-        cudaToolKit = pkgs.cudaPackages_12_8.cudatoolkit;
+        # Disable these doctests because cpython broke them
+        # This flake uses python 3.11.15 which is not hardcoded and skipped
+        # Keep in mind this package was last updatedi
+        # Snipped pulled from the error message:
+        # @pytest.mark.xfail(
+        #   python_version() in ('3.11.9', '3.11.10', '3.11.11', '3.12.3'),
+        #   reason='broken by https://github.com/python/cpython/pull/115440')
+        customPython = pkgs.python311.override {
+          packageOverrides = final: prev: {
+            pytest-doctestplus = prev.pytest-doctestplus.overridePythonAttrs (old: {
+              # This is the safe thing to do right?
+              doCheck = false;
+            });
+            mirakuru = prev.mirakuru.overridePythonAttrs (old: {
+              disabledTests = (old.disabledTests or []) ++ [
+                "test_stop_custom_exit_signal_context"
+              ];
+            });
+          };
+        };
+        pythonPackages = customPython.pkgs;
+        cudaToolkit = pkgs.cudaPackages_12_8.cudatoolkit;
 
         open3d = import ./nix/open3d.nix {
           inherit pkgs pythonPackages;
@@ -31,24 +51,24 @@
         };
 
         diffGaussianRasterization = import ./nix/diff-gaussian-rasterization.nix {
-          inherit pkgs cudaToolKit pythonPackages;
+          inherit pkgs cudaToolkit pythonPackages;
 
           srcPath = ./submodules/diff-gaussian-rasterization;
         };
 
         simpleKNN = import ./nix/simple-knn.nix {
-          inherit pkgs cudaToolKit pythonPackages;
+          inherit pkgs cudaToolkit pythonPackages;
 
           srcPath = ./submodules/simple-knn;
         };
 
         tetraTriangulation = import ./nix/tetra-triangulation.nix {
-          inherit pkgs cudaToolKit pythonPackages;
+          inherit pkgs cudaToolkit pythonPackages;
 
-          srcPath = ./submodules/tetra_triangulation;
+          srcPath = ./submodules/tetra-triangulation;
         };
         
-        pythonEnv = pkgs.python311.withPackages (ps: with ps; [
+        pythonEnv = customPython.withPackages (ps: with ps; [
           # top level environment.yml dependencies
           plyfile
           dacite
@@ -77,18 +97,18 @@
       in
       {
         devShells.default = pkgs.mkShell {
-          name = "cuda12.8-py3.11-env";
+          name = "cuda12.8-py3.11";
 
           buildInputs = [
             pythonEnv
-            cudaToolKit
+            cudaToolkit
             pkgs.stdenv.cc.cc.lib
             pkgs.ruff
             pkgs.ty
           ];
 
           shellHook = ''
-            export CUDA_PATH=${cudaToolKit}
+            export CUDA_PATH=${cudaToolkit}
             export LD_LIBRARY_PATH=/run/opengl-driver/lib:${pkgs.linuxPackages.nvidia_x11}/lib:${pkgs.stdenv.cc.cc.lib}/lib:${pkgs.libGL}/lib:$LD_LIBRARY_PATH
 
             echo "==================================================="
