@@ -64,7 +64,7 @@
                 xorg.libXrender
                 libxkbcommon
                 udev
-              ])}:/run/opengl-driver/lib:${pkgs.linuxPackages.nvidia_x11}/lib:$LD_LIBRARY_PATH
+              ])}:/run/opengl-driver/lib:/usr/lib/x86_64-linux-gnu:/lib/x86_64-linux-gnu:/usr/lib/wsl/lib:${pkgs.linuxPackages.nvidia_x11}/lib:$LD_LIBRARY_PATH
 
               echo "==================================================="
               echo "🚀 Hybrid Nix + uv Sandbox Loaded!"
