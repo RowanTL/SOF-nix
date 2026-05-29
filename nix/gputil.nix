@@ -3,6 +3,7 @@
 pythonPackages.buildPythonPackage rec {
   pname = "gputil";
   version = "1.4.0";
+  pyproject = true;
 
   src = pythonPackages.fetchPipy {
     pname = "GPUtil";
