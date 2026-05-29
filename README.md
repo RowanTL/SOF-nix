@@ -35,6 +35,28 @@
     </p>
   </div>
 
+## Rowan Note
+
+I forked this repo so I could 1) provide a reproducible version of this repo without using conda and 2)
+use a 5080 because the earliest version of cuda it supports is 12.8
+
+### How to use
+
+If you're on nix:
+- nix develop
+
+If you're not on nix, you're on your own for setting up the environment. Note: I only tested this on
+NixOS.
+
+Follow these instructions regardless of if you're on nix or not:
+- uv venv
+- source .venv/bin/activate (or whatever shell you use)
+- uv sync
+
+After this, you should be good to use this repo.
+
+Final Note: As of writing, **I haven't tested the code yet**
+
 ## Overview
 
 **SOF** is a method for **rapid extraction of unbounded surfaces**, using 3D Gaussians. Compared to recent methods, we deliver improved mesh quality, with more details, while accelerating both training and meshing significantly.
