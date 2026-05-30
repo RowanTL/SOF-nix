@@ -54,6 +54,10 @@
               
               export TORCH_CUDA_ARCH_LIST="8.9;9.0" 
 
+              mkdir -p .nix-gpu-libs
+              ln -sf /usr/lib/x86_64-linux-gnu/libcuda.so* .nix-gpu-libs/ 2>/dev/null || true
+              ln -sf /usr/lib/x86_64-linux-gnu/libnvidia*.so* .nix-gpu-libs/ 2>/dev/null || true
+
               export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath (with pkgs; [
                 stdenv.cc.cc.lib
                 zlib
@@ -65,7 +69,8 @@
                 libxkbcommon
                 udev
               # ])}:/run/opengl-driver/lib:/usr/lib/wsl/lib:${pkgs.linuxPackages.nvidia_x11}/lib:$LD_LIBRARY_PATH
-              ])}:/run/opengl-driver/lib:/usr/lib/wsl/lib:$LD_LIBRARY_PATH
+              # ])}:/run/opengl-driver/lib:/usr/lib/wsl/lib:$LD_LIBRARY_PATH
+              ])}:$PWD/.nix-gpu-libs:/run/opengl-driver/lib:/usr/lib/wsl/lib:$LD_LIBRARY_PATH
 
               echo "==================================================="
               echo "🚀 Hybrid Nix + uv Sandbox Loaded!"
