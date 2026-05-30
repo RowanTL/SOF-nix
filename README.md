@@ -52,6 +52,9 @@ Follow these instructions regardless of if you're on nix or not:
 - uv venv
 - source .venv/bin/activate (or whatever shell you use)
 - uv sync
+- uv pip install --no-build-isolation submodules/simple-knn
+- uv pip install --no-build-isolation submodules/diff-gaussian-rasterization
+- uv pip install --no-build-isolation submodules/tetra-triangulation
 
 After this, you should be good to use this repo.
 
