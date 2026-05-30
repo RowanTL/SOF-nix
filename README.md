@@ -40,6 +40,9 @@
 I forked this repo so I could 1) provide a reproducible version of this repo without using conda and 2)
 use a 5080 because the earliest version of cuda it supports is 12.8
 
+After seeing this not work on unbuntu with nix installed on top of it out of the box, I pray for you
+if you decide to use this repo. There's some jank to get this working for sure.
+
 ### How to use
 
 If you're on nix:

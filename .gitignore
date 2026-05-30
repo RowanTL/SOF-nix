@@ -12,3 +12,6 @@ data/
 eval/
 depths/
 DTU_GT/
+
+# jank fix
+.nix-gpu-libs
