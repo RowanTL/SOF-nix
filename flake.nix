@@ -44,6 +44,7 @@
               xorg.libX11
               xorg.libXext
               xorg.libXrender
+              xorg.libxcb
               libxkbcommon
             ];
 
@@ -66,6 +67,7 @@
                 xorg.libX11
                 xorg.libXext
                 xorg.libXrender
+                xorg.libxcb
                 libxkbcommon
                 udev
               # ])}:/run/opengl-driver/lib:/usr/lib/wsl/lib:${pkgs.linuxPackages.nvidia_x11}/lib:$LD_LIBRARY_PATH
