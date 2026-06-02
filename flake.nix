@@ -19,6 +19,7 @@
             inherit system;
             config = {
               allowUnfree = true;
+              allowBroken = true;
               cudaSupport = true;
               cudaVersion = "12.8";
             };
