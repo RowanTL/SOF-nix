@@ -37,6 +37,7 @@
               cudaPackages_12_8.cudatoolkit
               colmapWithCuda
               imagemagick
+              ffmpeg
               
               # Core C-libraries required by PyTorch and PyPI wheels
               stdenv.cc.cc.lib
