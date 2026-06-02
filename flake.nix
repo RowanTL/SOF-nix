@@ -48,6 +48,8 @@
               udev
               gmp
               cgal
+              ## Needed for building tetra-triangulation
+              python311Packages.pybind11
 
               # Graphics & Windowing libraries
               xorg.libX11
@@ -61,6 +63,9 @@
               export CUDA_HOME=${pkgs.cudaPackages_12_8.cudatoolkit}
               export CC=${pkgs.gcc13}/bin/gcc
               export CXX=${pkgs.gcc13}/bin/g++
+              export PYBINDSRC=${pkgs.python311Packages.pybind11.src}
+              export GMPDEVDIR=${pkgs.gmp.dev}
+              export GMPLIBRARYDIR=${pkgs.gmp}
 
               export TORCH_CUDA_ARCH_LIST="8.9;9.0"
 
