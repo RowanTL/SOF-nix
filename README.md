@@ -46,23 +46,26 @@ if you decide to use this repo. There's some jank to get this working for sure.
 ### How to use
 
 If you're on nix:
-- nix develop
+- `nix develop`
 
-If you're not on nix, you're on your own for setting up the environment. Note: I only tested this on
-NixOS.
+If you're not on nix, you're on your own for setting up the environment.
 
-Follow these instructions regardless of if you're on nix or not:
-- uv venv
-- source .venv/bin/activate (or whatever shell you use)
-- uv sync
-- uv pip install --no-build-isolation submodules/simple-knn
-- uv pip install --no-build-isolation submodules/diff-gaussian-rasterization
-- uv pip install --no-build-isolation submodules/tetra-triangulation
-- uv pip install git+https://github.com/rahul-goel/fused-ssim/ --no-build-isolation
+Tested on ubuntu with nix installed on top
+
+Follow these instructions regardless of if you're on nix or not (after `nix develop`):
+- `uv venv`
+- `source .venv/bin/activate` (or whatever shell you use)
+- `uv sync`
+- `uv pip install --no-build-isolation submodules/simple-knn`
+- `uv pip install --no-build-isolation submodules/diff-gaussian-rasterization`
+- `uv pip install --no-build-isolation submodules/tetra-triangulation`
+- `uv pip install git+https://github.com/rahul-goel/fused-ssim/ --no-build-isolation`
+- `cd submodules/tetra-triangulation`
+- `bash cmake_dot.sh`
+- `make`
+- `uv pip install -e . --no-build-isolation`
 
 After this, you should be good to use this repo.
-
-Final Note: As of writing, **I haven't tested the code yet**
 
 ## Overview
 
