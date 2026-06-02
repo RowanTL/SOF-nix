@@ -58,6 +58,7 @@ Follow these instructions regardless of if you're on nix or not:
 - uv pip install --no-build-isolation submodules/simple-knn
 - uv pip install --no-build-isolation submodules/diff-gaussian-rasterization
 - uv pip install --no-build-isolation submodules/tetra-triangulation
+- uv pip install git+https://github.com/rahul-goel/fused-ssim/ --no-build-isolation
 
 After this, you should be good to use this repo.
 
