@@ -36,6 +36,7 @@
               gcc13      # C++ Compiler
               cudaPackages_12_8.cudatoolkit
               colmapWithCuda
+              imagemagick
               
               # Core C-libraries required by PyTorch and PyPI wheels
               stdenv.cc.cc.lib
