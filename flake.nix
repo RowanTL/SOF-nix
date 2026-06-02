@@ -19,9 +19,11 @@
             inherit system;
             config = {
               allowUnfree = true;
-              allowBroken = true;
               cudaSupport = true;
               cudaVersion = "12.8";
+              permittedInsecurePackages = [
+                "freeimage-3.18.0-unstable-2024-04-18"
+              ];
             };
           };
         in
