@@ -34,6 +34,7 @@
               uv
               ninja # Required for compiling the submodules
               gcc13 # C++ Compiler
+              cmake
               cudaPackages_12_8.cudatoolkit
               colmapWithCuda
               imagemagick
