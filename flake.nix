@@ -48,6 +48,8 @@
               udev
               gmp
               cgal
+              mpfr
+              boost
               ## Needed for building tetra-triangulation
               python311Packages.pybind11
 
@@ -66,6 +68,13 @@
               export PYBINDSRC=${pkgs.python311Packages.pybind11.src}
               export GMPDEVDIR=${pkgs.gmp.dev}
               export GMPLIBRARYDIR=${pkgs.gmp}
+              export MPFRDEVDIR=${pkgs.mpfr.dev}
+              export MPFRLIBRARYDIR=${pkgs.mpfr}
+              export BOOSTINCLUDEDIR=${pkgs.boost.dev}/include
+
+              export CUDART_STATIC=${pkgs.cudaPackages_12_8.cuda_cudart.static}
+              export CUDADEVRT_STATIC=${pkgs.cudaPackages_12_8.cuda_nvcc.static}
+              export LIBRARY_PATH="$CUDART_STATIC/lib:$CUDADEVRT_STATIC/lib:$CUDA_HOME/lib:$CUDA_HOME/lib/stubs:$LIBRARY_PATH"
 
               export TORCH_CUDA_ARCH_LIST="8.9;9.0"
 
