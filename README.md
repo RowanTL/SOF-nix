@@ -58,12 +58,12 @@ Follow these instructions regardless of if you're on nix or not (after `nix deve
 - `uv sync`
 - `uv pip install --no-build-isolation submodules/simple-knn`
 - `uv pip install --no-build-isolation submodules/diff-gaussian-rasterization`
-- `uv pip install --no-build-isolation submodules/tetra-triangulation`
 - `uv pip install git+https://github.com/rahul-goel/fused-ssim/ --no-build-isolation`
 - `cd submodules/tetra-triangulation`
 - `bash cmake_dot.sh`
 - `make`
 - `uv pip install -e . --no-build-isolation`
+- `cd ../../`
 
 After this, you should be good to use this repo.
 
