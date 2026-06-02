@@ -32,13 +32,14 @@
               ninja      # Required for compiling the submodules
               gcc13      # C++ Compiler
               cudaPackages_12_8.cudatoolkit
-              udev
+              colmapWithCuda
               
               # Core C-libraries required by PyTorch and PyPI wheels
               stdenv.cc.cc.lib
               zlib
               glib
               libGL
+              udev
 
               # Graphics & Windowing libraries
               xorg.libX11
