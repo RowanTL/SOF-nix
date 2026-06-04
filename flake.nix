@@ -26,10 +26,14 @@
               ];
             };
           };
+          spyder = pkgs.writeShellScriptBin "spyder" ''
+            exec nix run git+https://codeberg.org/nobodyinperson/nix-spyder -- "$@"
+          '';
         in
         {
           default = pkgs.mkShell {
             buildInputs = with pkgs; [
+              spyder
               python311
               uv
               ninja # Required for compiling the submodules
