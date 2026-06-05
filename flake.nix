@@ -27,7 +27,7 @@
             };
           };
           spyder = pkgs.writeShellScriptBin "spyder" ''
-            exec nix run git+https://codeberg.org/nobodyinperson/nix-spyder -- "$@"
+            exec nix run git+https://codeberg.org/nobodyinperson/nix-spyder#withPackages numpy matplotlib scipy plyfile torch -- "$@"
           '';
         in
         {
