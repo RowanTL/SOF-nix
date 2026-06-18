@@ -15,3 +15,6 @@ DTU_GT/
 
 # jank fix
 .nix-gpu-libs
+
+# sypder filse
+.spyproject
